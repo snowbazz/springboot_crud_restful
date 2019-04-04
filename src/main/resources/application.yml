@@ -1,0 +1,14 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: springboot_crud_restful
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_springboot?characterEncoding=utf-8
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    show-sql: true
+    generate-ddl: true
