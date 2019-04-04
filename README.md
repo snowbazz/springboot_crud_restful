@@ -2,9 +2,9 @@
 
 ### Description
 
-一个SpringBoot入门小Demo，只有简单的CRUD和`ExceptionHandler`异常处理的使用，符合RESTful规范。
+一个 SpringBoot 入门小 Demo，只有简单的 CRUD 和`ExceptionHandler`异常处理的使用，符合 RESTful 规范。
 
-如果你不太了解什么是RESTful，可以结合我的一篇文章：[RESTful API](<https://orrrz.github.io/posts/restful-api/>)。
+如果你不太了解什么是 RESTful，可以结合我的一篇文章：[RESTful API](<https://orrrz.github.io/posts/restful-api/>)。
 
 ### Note
 
@@ -94,7 +94,7 @@ public class LabelController {
 
 ### 异常处理
 
-值得一提的是，在这期间我学习了如何使用 `ExceptionHandler` 处理异常。
+值得一提的是，在这期间我学习了如何使用`@ControllerAdvice` + `@ExceptionHandler` 实现全局的异常处理。
 
 下面是我自己处理全局异常以及自定义异常的代码
 
@@ -131,31 +131,11 @@ public class BaseExceptionHandler {
 }
 ```
 
+- 我的代码中使用增强Controller做全局异常处理，即`@ControllerAdivice`注解，有这个注解的类中的方法的某些注解会应用到所有的Controller里，比如`@ExceptionHandler`注解。
 
+- 由于我的Controller的CRUD方法没有捕获异常，所以会将异常抛给`BaseExceptionHandler`处理（我上面定义的全局异常处理类，这个类中只处理了两个异常，如果还需要特殊处理的异常，只需要加上处理的方法即可），直接返回异常信息给前端。
 
-Spring MVC 提供了异常解析器 HandlerExceptionResolver 接口，将处理器( `handler` )执行时发生的异常，解析( 转换 )成对应的 ModelAndView 结果。代码如下：
+- tips: `@ControllerAdvice` 注解标注当前bean是对 Controller 进行增强，具体增强什么，需要配合`@ExceptionHandler` 实现对异常的精确处理。
 
-```java
-// HandlerExceptionResolver.java
-
-public interface HandlerExceptionResolver {
-
-    /**
-     * 解析异常，转换成对应的 ModelAndView 结果
-     */
-    @Nullable
-    ModelAndView resolveException(
-            HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex);
-
-}
-```
-
-- 也就是说，如果异常被解析成功，则会返回 ModelAndView 对象。
-- 一般情况下，我们使用`@ExceptionHandler`注解来实现异常的处理
-
-- 当一个Controller中有方法加了@ExceptionHandler之后，这个Controller其他方法中没有捕获的异常就会以参数的形式传入加了@ExceptionHandler注解的那个方法中。
-
-我的代码中使用增强Controller做全局异常处理，即`@ControllerAdivice`注解，有这个注解的类中的方法的某些注解会应用到所有的Controller里，其中就包括`@ExceptionHandler`注解。
-
-由于我的Controller的CRUD方法没有捕获异常，所以会将异常抛给`BaseExceptionHandler`处理（我上面定义的全局异常处理类，这个类中只处理了两个异常，如果还需要特殊处理的异常，只需要加上处理的方法即可），直接返回异常信息给前端。
+补充：对于SpringMVC异常处理的方式详见我的笔记：[SpringMVC异常处理](<https://orrrz.github.io/posts/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/>)
 
