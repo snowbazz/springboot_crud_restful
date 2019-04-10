@@ -4,7 +4,7 @@
 
 一个 SpringBoot 入门小 Demo，只有简单的 CRUD 和`ExceptionHandler`异常处理的使用，符合 RESTful 规范。
 
-如果你不太了解什么是 RESTful，可以结合我的一篇文章：[RESTful API](<https://orrrz.github.io/posts/restful-api/>)。
+关于RESTful我做了个总结，可以结合我的一篇文章：[RESTful API](<https://orrrz.github.io/posts/restful-api/>)。
 
 ### Note
 
