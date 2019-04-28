@@ -4,7 +4,7 @@
 
 一个 SpringBoot 入门小 Demo，只有简单的 CRUD 和`ExceptionHandler`异常处理的使用，符合 RESTful 规范。
 
-关于RESTful我做了个总结，可以结合我的笔记：[RESTful API](<https://orrrz.github.io/post/restful-api/>)。
+关于RESTful我做了个总结，可以结合我的笔记：[RESTful API](<https://snowbazz.github.io/post/restful-api/>)。
 
 ### Note
 
@@ -137,5 +137,5 @@ public class BaseExceptionHandler {
 
 - tips: `@ControllerAdvice` 注解标注当前bean是对 Controller 进行增强，具体增强什么，需要配合`@ExceptionHandler` 实现对异常的精确处理。
 
-补充：对于SpringMVC异常处理的方式详见我的笔记：[SpringMVC异常处理](<https://orrrz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/>)
+补充：对于SpringMVC异常处理的方式详见我的笔记：[SpringMVC异常处理](<https://snowbazz.github.io/post/springmvc%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/>)
 
