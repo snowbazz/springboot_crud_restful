@@ -86,6 +86,10 @@ public class LabelController {
 @ResponseBody：将controller的方法返回的对象通过适当的转换器转换为指定的格式之后，写入到response对象的body区，通常用来返回JSON数据或者是XML
 
 @ModelAttribute：自动将请求的form表单参数 组装成对象（本文无关）
+
+@RestController = @ResponseBody + @Controller ( 如果用@RestController注解类，则配置的InternalResourceViewResolver不起作用，返回的是return的字符串，无法返回jsp页面 )
+- 如果需要返回到指定页面，需要用到@Controller配合InternalResourceViewResolver，返回JSON，XML或自定义mediaType内容到页面，需要在对应的方法上添加@ResponseBody注解
+
 ```
 
 
